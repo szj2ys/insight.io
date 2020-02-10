@@ -1,0 +1,48 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+    "name": "Insight.io for Github",
+    "description": "Improve GitHub code browsing experience by applying code intelligence from Insight.io.",
+    "manifest_version": 2,
+    "browser_action": {
+        "default_title": "Settings",
+        "default_popup": "popout.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://github.com/*",
+                "*://*.insight.io/*"
+            ],
+            "js": [
+                "content.bundle.js"
+            ],
+            "css": [
+                
+            ]
+        }
+    ],
+    "permissions": [
+        "*://*.github.com/*",
+        "*://*.insight.io/*",
+        "storage"
+    ],
+    "web_accessible_resources": [
+        "css/*",
+        "images/*",
+        "javascripts/*"
+    ],
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "background": {
+        "scripts": [
+            "background.bundle.js"
+        ],
+        "persistent": false
+    },
+    "content_security_policy": "script-src 'self' http://localhost:9090; object-src 'self'",
+    "version": "0.7.4"
+}
